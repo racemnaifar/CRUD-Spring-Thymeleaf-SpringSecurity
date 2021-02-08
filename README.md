@@ -8,3 +8,5 @@
 2) Customer Managment (CRUD: Add, Delete, Update)
 3) Add account assigned to customer
 4) Account Managment (CRUD: Add, Delete, Update, Print)
+
+## Architecture
