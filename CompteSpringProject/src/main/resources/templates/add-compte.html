@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <title>ADD ACCOUNT</title>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" th:href="@{/static/images/icons/favicon.ico}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/fonts/iconic/css/material-design-iconic-font.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/vendor/css-hamburgers/hamburgers.min.css}">
+	 <link rel="stylesheet" href="/static/dist/css/adminlte.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/util.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/registration.css}">
+<script src="/static/dist/js/adminlte.min.js"></script>
+<script src="/static/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/static/dist/js/adminlte.min.js"></script>
+<script th:src="@{/static/vendor/select2/select2.min.js}"></script>
+<script th:src="@{/static/js/main.js}"></script>
+      <script src="/static/plugins/jquery/jquery.min.js"></script>
+      
+  <link rel="stylesheet" href="/static/js/jquery-ui-1.8.16/themes/base/jquery-ui.css" type="text/css" /> 
+  <script src="/static/js/jquery-ui-1.8.16/jquery-1.6.2.js"></script>
+  <script type="text/javascript" src="/static/js/jquery-ui-1.8.16/ui/jquery-ui.js"></script> 
+  <script type="text/javascript" src="/static/js/jquery-ui-1.8.16/ui/jquery.ui.core.js"></script>
+  <script type="text/javascript" src="/static/js/jquery-ui-1.8.16/ui/jquery.ui.position.js"></script>
+  <script type="text/javascript" src="/static/js/jquery-ui-1.8.16/ui/jquery.ui.widget.js"></script>
+</head>
+<body >
+ 
+    <section class="content" style="margin-top:20px">
+      <div class="container-fluid">
+        <div class="row" >
+          <div class="col-md-12">
+            <div class="card card-secondary" >
+              <div class="card-header">
+                <h3 class="card-title">ADD ACCOUNT</h3>
+              </div>
+               <form class="login100-form validate-form" autocomplete="off" th:action="@{/save-compte}"
+              th:object="${compte}" method="post" role="form">
+                <div class="card-body">
+                
+				  	<label style="color:#696969">Rib</label>
+            		<div class="wrap-input100 validate-input m-b-25" data-validate="Enter Rib">
+              		  <label th:if="${#fields.hasErrors('rib')}" th:errors="*{rib}"
+                       class="validation-message"></label>
+               		 <input type="text" th:field="*{rib}" name="rib" maxlength="8"
+                       class="form-control input100"/>
+               		 <span class="focus-input100"></span>
+          		  	</div>
+                  
+                  <label style="color:#696969">Solde</label>
+            		<div class="wrap-input100 validate-input m-b-25" data-validate="Enter Solde">
+              		  <label th:if="${#fields.hasErrors('solde')}" th:errors="*{solde}"
+                       class="validation-message"></label>
+               		 <input type="text" th:field="*{solde}" name="solde"
+                       class="form-control input100"/>
+               		 <span class="focus-input100"></span>
+          		  	</div>
+          		  	
+          		  	<label style="color:#696969">Account Type</label>
+           			 <div class="wrap-input100 validate-input m-b-20" data-validate="Enter type">
+                			<label th:if="${#fields.hasErrors('type')}" th:errors="*{type}"
+                      		 class="validation-message"></label>
+               				 <select required class="form-control input100" name="type">
+              	   			   <option value="">Select type</option>
+                  				  <option th:each="compteType : ${comptesType}" th:value="${compteType.key}"
+                   	         th:text="${compteType.value}"></option>
+              				  </select>
+               				 <span class="focus-input100"></span>
+           			 </div>
+                  
+                   <label style="color:#696969">Creation Date</label>
+           			 <div class="wrap-input100 validate-input m-b-25" data-validate="Enter Creation Date">
+               			 <label th:if="${#fields.hasErrors('creationDate')}" th:errors="*{creationDate}"
+                       class="validation-message"></label>
+                		<input type="date" th:field="*{creationDate}" name="creationDate" placeholder="Creation Date"
+                       class="form-control input100"/>
+               			 <span class="focus-input100"></span>
+           			 </div>
+ 
+                    <label style="color:#696969">Customer</label>   
+                    <div class="wrap-input100 validate-input m-b-20" data-validate="Enter Customer">
+                       <input type="text"  id="customer"  class="form-control input100"/>
+                       <input type="text"  id="customerid" th:field="*{client.id}" name="client.id"
+                       class="form-control input100"/>
+               			 <span class="focus-input100"></span>
+                                        
+                    </div>
+                    
+                    
+                                   
+                  <!--  <div class="wrap-input100 validate-input m-b-20" data-validate="Enter Customer">
+                        <select required class="form-control input50" name="client.id" style="font-size:12px;font-family:Arial">
+                            <option value="" style="color:#696969">Select Customer</option>
+                            <option th:each="client : ${clients}" th:value="${client.id}"
+                                    th:text="${client.cin}"></option>
+                        </select>
+                        <span class="focus-input100"></span>
+                    </div>--> 
+                   
+                </div>
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-secondary">ADD Account</button>
+                  <div align="center" >
+                    <h4><span class="text-success " th:utext="${successMessage}"></span></h4>
+                </div>
+                </div>
+              </form>
+            </div>
+          </div>
+         </div>
+       </div>
+    </div>   
+</div>
+
+
+<script>
+$(function() {
+
+	$("#customer").autocomplete({
+	source: function( request, response ) {
+	$.ajax({
+	url: "http://localhost:8484/ajaxclientSearchGeneral",
+	dataType: "json",
+	data: {
+	maxRows: 10,
+	startsWith: request.term
+	},
+	success: function( data ) {
+	response( $.map( data.clients, function( item ) {
+	//$("#customerid").val(item.id)	
+	return {
+	label: item.cin + ", " +item.nom + ", " + item.prenom,
+	value: item.id,
+	}
+	}));
+	}
+	});
+	},
+	minLength: 1,
+	open: function() {
+	$( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+	},
+	close: function() {
+	$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+	}
+	});
+	});
+
+</script>
+</body>
+</html>

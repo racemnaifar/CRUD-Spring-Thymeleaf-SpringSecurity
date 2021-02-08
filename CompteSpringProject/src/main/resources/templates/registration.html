@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <title>Account Managment</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png"  th:href="@{/static/images/icons/favicon.ico}"/>
+    <link rel="stylesheet" type="text/css"  th:href="@{/static/vendor/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css"  th:href="@{/static/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" type="text/css"  th:href="@{/static/fonts/iconic/css/material-design-iconic-font.min.css}">
+    <link rel="stylesheet" type="text/css"  th:href="@{/static/vendor/animate/animate.css}">
+    <link rel="stylesheet" type="text/css"  th:href="@{/static/vendor/css-hamburgers/hamburgers.min.css}">
+    <link rel="stylesheet" type="text/css"  th:href="@{/static/vendor/animsition/css/animsition.min.css}">
+    <link rel="stylesheet" type="text/css"  th:href="@{/static/vendor/select2/select2.min.css}">
+    <link rel="stylesheet" type="text/css"  th:href="@{/static/vendor/daterangepicker/daterangepicker.css}">
+    <link rel="stylesheet" type="text/css"  th:href="@{/static/css/util.css}">
+    <link rel="stylesheet" type="text/css"  th:href="@{/static/css/main.css}">
+    <link rel="stylesheet" type="text/css"  th:href="@{/static/css/registration.css}">
+</head>
+<body>
+
+
+<div class="container-login100" style="background: url('static/images/banque2.jpg') no-repeat fixed;  background-size: cover;">
+    <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
+        <form class="login100-form validate-form" autocomplete="off" action="#" th:action="@{/registration}"
+              th:object="${user}" method="post" role="form">
+				<span class="login100-form-title p-b-37">
+                           Registration
+                </span>
+
+            <div class="wrap-input100 validate-input m-b-20" data-validate="Enter name">
+                <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+                       class="validation-message"></label>
+                <input type="text" th:field="*{name}" placeholder="Name"
+                       class="form-control input100"/>
+                <span class="focus-input100"></span>
+            </div>
+
+            <div class="wrap-input100 validate-input m-b-25" data-validate="Enter lastName">
+                <label th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+                       class="validation-message"></label>
+                <input type="text" th:field="*{lastName}"
+                       placeholder="Last Name" class="form-control input100"/>
+                <span class="focus-input100"></span>
+            </div>
+
+            <div class="wrap-input100 validate-input m-b-25" data-validate="Enter email">
+                <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                       class="validation-message"></label>
+                <input type="text" th:field="*{email}" placeholder="Email"
+                       class="form-control input100"/>
+                <span class="focus-input100"></span>
+            </div>
+            <div class="wrap-input100 validate-input m-b-25" data-validate="Enter userName">
+                <label th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"
+                       class="validation-message"></label>
+                <input type="text" th:field="*{userName}" placeholder="UserName"
+                       class="form-control input100"/>
+                <span class="focus-input100"></span>
+            </div>
+            <div class="wrap-input100 validate-input m-b-25" data-validate="Enter password">
+                <label th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                       class="validation-message"></label>
+                <input type="password" th:field="*{password}" placeholder="Password"
+                       class="form-control input100"/>
+                <span class="focus-input100"></span>
+            </div>
+
+            <div class="container-login100-form-btn">
+                <button class="login100-form-btn" value="Register" type="Submit">
+                    Register User
+                </button>
+                <div align="center">
+                    <h4><span class="text-success " th:utext="${successMessage}"></span></h4>
+                </div>
+            </div>
+            <div align="center">
+                <a href="/login" class="txt2 hov1">
+                    Sign In
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script th:src="@{vendor/jquery/jquery-3.2.1.min.js}"></script>
+<script th:src="@{vendor/animsition/js/animsition.min.js}"></script>
+<script th:src="@{vendor/bootstrap/js/popper.js}"></script>
+<script th:src="@{vendor/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{vendor/select2/select2.min.js}"></script>
+<script th:src="@{vendor/daterangepicker/moment.min.js}"></script>
+<script th:src="@{vendor/daterangepicker/daterangepicker.js}"></script>
+<script th:src="@{vendor/countdowntime/countdowntime.js}"></script>
+<script th:src="@{js/main.js}"></script>
+</body>
+</html>

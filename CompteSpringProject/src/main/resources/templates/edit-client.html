@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <title>EDIT CUSTOMER</title>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" th:href="@{/static/images/icons/favicon.ico}"/>
+    <link rel="stylesheet"  type="text/css" th:href="@{/static/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" 	type="text/css" th:href="@{/static/fonts/iconic/css/material-design-iconic-font.min.css}">
+    <link rel="stylesheet"  type="text/css" th:href="@{/static/vendor/css-hamburgers/hamburgers.min.css}">
+	<link rel="stylesheet"  href="/static/dist/css/adminlte.min.css">
+    <link rel="stylesheet"  type="text/css" th:href="@{/static/css/util.css}">
+    <link rel="stylesheet"  type="text/css" th:href="@{/static/css/main.css}">
+    <link rel="stylesheet"  type="text/css" th:href="@{/static/css/registration.css}">
+</head>
+<body >
+ 
+    <section class="content" style="margin-top:20px">
+      <div class="container-fluid">
+        <div class="row" >
+          <div class="col-md-12">
+            <div class="card card-info" >
+              <div class="card-header">
+                <h3 class="card-title">EDIT CUSTOMER</h3>
+              </div>
+               <form class="login100-form validate-form" autocomplete="off" th:action="@{/update-client}"
+              th:object="${client}" method="post" role="form">
+                <div class="card-body">                
+                    <input type="hidden" th:field="*{id}" name="id"/>
+                
+				  	<label style="color:#696969">Cin</label>
+            		<div class="wrap-input100 validate-input m-b-25" data-validate="Enter Cin">
+              		  <label th:if="${#fields.hasErrors('cin')}" th:errors="*{cin}"
+                       class="validation-message"></label>
+               		 <input type="text" th:field="*{cin}"  maxlength="8" name="object"
+                       class="form-control input100"/>
+               		 <span class="focus-input100"></span>
+          		  	</div>
+                  
+                  <label style="color:#696969">First Name</label>
+            		<div class="wrap-input100 validate-input m-b-25" data-validate="Enter First Name">
+              		  <label th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"
+                       class="validation-message"></label>
+               		 <input type="text" th:field="*{nom}" name="object"
+                       class="form-control input100"/>
+               		 <span class="focus-input100"></span>
+          		  	</div>
+                  
+                   <label style="color:#696969">Last Name</label>
+            		<div class="wrap-input100 validate-input m-b-25" data-validate="Enter Last Name">
+              		  <label th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}"
+                       class="validation-message"></label>
+               		 <input type="text" th:field="*{prenom}" name="object"
+                       class="form-control input100"/>
+               		 <span class="focus-input100"></span>
+          		  	</div>
+          		  	
+          		  	<label style="color:#696969">Email</label>
+            		<div class="wrap-input100 validate-input m-b-25" data-validate="Enter Email">
+              		  <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                       class="validation-message"></label>
+               		 <input type="text" th:field="*{email}"  name="object"
+                       class="form-control input100"/>
+               		 <span class="focus-input100"></span>
+          		  	</div>
+                   
+                </div>
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-info"  value="client">EDIT CUSTOMER</button>
+                  <div align="center" >
+                    <h4><span class="text-success " th:utext="${successMessage}"></span></h4>
+                </div>
+                </div>
+              </form>
+            </div>
+          </div>
+         </div>
+       </div>
+    </div>
+</div>
+
+
+<script th:src="@{/static/plugins/jquery/jquery.min.js}"></script>
+<script th:src="@{/static/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/static/dist/js/adminlte.min.js}"></script>
+<script th:src="@{/static/vendor/select2/select2.min.js}"></script>
+<script th:src="@{/static/js/main.js}"></script>
+
+</body>
+</html>

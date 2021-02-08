@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>LIST ACCOUNTS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="/static/images/icons/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="/static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/fonts/iconic/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="/static/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+  	<link rel="stylesheet" href="/static/dist/css/adminlte.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/registration.css">
+</head>
+<body>
+
+
+    <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30" style="width: 100%!important; height:100%">
+         <div class="col-sm-12 col-md-12 col-lg-12">
+            <h1 style="float:left;font-family:'Arial';margin-top: -5%;">LIST ACCOUNTS</h1>
+            <span style="font-size: 16px;float:right;margin-top: -5%;font-weight: bold" th:utext="${userName}"></span>
+            <button class="btn btn-lg" style="float:right;width:15%;margin-top: -4%;">
+                <i class="glyphicon glyphicon-log-out"></i>
+                <a href="/logout" class="txt2 hov1" style="color:black;">
+                    Log out
+                </a>
+            </button>
+        </div> 
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <form th:action="@{/list-client-comptes}" method="get">
+                <div class="input-group search_button" style="float:left;margin-top:5%">
+                    <input class="form-control" type="text" placeholder="Search by Rib"
+                           th:value="${searchValue}" name="searchValue" aria-label="Search" >
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                 <div style="text-align: right;float:right;margin-top:5%;margin-left:10px">
+                    <button class="btn-lg" style="background-color:#2F4F4F">
+                        <i class="glyphicon glyphicon-print" style="color:white"></i>
+                        <a id="btPrint" onclick="createPDF()" class="txt2 hov1" style="color:white"> Print </a>
+                    </button>
+                </div>
+              
+            </form>
+            <br>
+            <div class="table-responsive" id="comptesTable" style="margin-top:10%;">
+                <table   id="example1" class="table table-bordered table-striped">
+                    <thead style="font-size:14px;font-family:'Verdana';text-transform: uppercase;text-align: center;">
+                    <th>RIB</th>                  
+                    <th>Type</th>
+                    <th>Solde</th>
+                    <th>Cin Customer</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>                    
+                    </thead>
+                    <tbody style="font-size:16px;font-family:'Arial';text-align: center;">
+
+                    <tr th:each="compte,iterStat : ${comptes}" th:id="${compte.id}">
+                    	<td th:text="${compte.rib}" ></td>
+                        <td th:text="${compte.type}"></td>
+                        <td th:text="${compte.solde}"></td>
+						<td th:text="${compte.client.cin}"></td>
+						<td th:text="${compte.client.prenom}"></td>
+						<td th:text="${compte.client.nom}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+<script src="/static/vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="/static/vendor/animsition/js/animsition.min.js"></script>
+<script src="/static/vendor/bootstrap/js/popper.js"></script>
+<script src="/static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="/static/vendor/select2/select2.min.js"></script>
+<script src="/static/vendor/daterangepicker/moment.min.js"></script>
+<script src="/static/vendor/daterangepicker/daterangepicker.js"></script>
+<script src="/static/vendor/countdowntime/countdowntime.js"></script>
+<script src="/static/js/sweetalert.min.js"></script>
+<script src="/static/js/main.js"></script>
+<script  src="/static/plugins/datatables/jquery.dataTables.js"></script>
+<script  src="/static/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<script src="/static/js/list.js"></script>
+
+<script>
+  $(function () {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+    });
+  });
+</script>
+</body>
+</html>

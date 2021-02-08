@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <title>ADD USER</title>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" th:href="@{/static/images/icons/favicon.ico}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/fonts/iconic/css/material-design-iconic-font.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/vendor/css-hamburgers/hamburgers.min.css}">
+	 <link rel="stylesheet" href="/static/dist/css/adminlte.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/util.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/registration.css}">
+</head>
+<body >
+ 
+    <section class="content" style="margin-top:20px">
+      <div class="container-fluid">
+        <div class="row" >
+          <div class="col-md-12">
+            <div class="card card-secondary" >
+              <div class="card-header">
+                <h3 class="card-title">ADD USER</h3>
+              </div>
+               <form class="login100-form validate-form" autocomplete="off"  th:action="@{/registration}"
+              th:object="${user}" method="post" role="form">
+                <div class="card-body">
+                
+                  <label style="color:#696969">First Name</label>
+            		<div class="wrap-input100 validate-input m-b-25" data-validate="Enter First Name">
+              		  <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+                       class="validation-message"></label>
+               		 <input type="text" th:field="*{name}" name="name"
+                       class="form-control input100"/>
+               		 <span class="focus-input100"></span>
+          		  	</div>
+                  
+                   <label style="color:#696969">Last Name</label>
+            		<div class="wrap-input100 validate-input m-b-25" data-validate="Enter Last Name">
+              		  <label th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+                       class="validation-message"></label>
+               		 <input type="text" th:field="*{lastName}" name="lastName"
+                       class="form-control input100"/>
+               		 <span class="focus-input100"></span>
+          		  	</div>
+          		  	
+          		  	<label style="color:#696969">Email</label>
+            		<div class="wrap-input100 validate-input m-b-25" data-validate="Enter Email">
+              		  <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                       class="validation-message"></label>
+               		 <input type="text" th:field="*{email}" name="email"
+                       class="form-control input100"/>
+               		 <span class="focus-input100"></span>
+          		  	</div>
+                
+                	<label style="color:#696969">UserName</label>
+               		 <div class="wrap-input100 validate-input m-b-25" data-validate="Enter userName">
+                	  <label th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"
+                       class="validation-message"></label>
+               			 <input type="text" th:field="*{userName}" placeholder="UserName"
+                       class="form-control input100"/>
+               			 <span class="focus-input100"></span>
+            		</div>
+            		
+            		<label style="color:#696969">Password</label>
+            		<div class="wrap-input100 validate-input m-b-25" data-validate="Enter password">
+                		<label th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                       class="validation-message"></label>
+                		<input type="password" th:field="*{password}" placeholder="Password"
+                       class="form-control input100"/>
+               		 <span class="focus-input100"></span>
+            		</div>   
+                </div>
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-secondary">ADD USER</button>
+                  <div align="center" >
+                    <h4><span class="text-success " th:utext="${successMessage}"></span></h4>
+                </div>
+                </div>
+              </form>
+            </div>
+          </div>
+         </div>
+       </div>
+    </div>
+</div>
+
+
+<script src="/static/plugins/jquery/jquery.min.js"></script>
+<script src="/static/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/static/dist/js/adminlte.min.js"></script>
+<script th:src="@{/static/vendor/select2/select2.min.js}"></script>
+<script th:src="@{/static/js/main.js}"></script>
+
+</body>
+</html>
